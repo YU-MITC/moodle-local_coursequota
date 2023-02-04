@@ -43,8 +43,8 @@ function xmldb_local_coursequota_upgrade($oldversion) {
 
     $dbman = $DB->get_manager();
 
-    if ($oldversion < 2022031400) {
-        $table = new xmldb_table('coursequota');
+    if ($oldversion < 2023020300) {
+        $table = new xmldb_table('local_coursequota');
         if (!$dbman->table_exists($table)) {
             $field1 = new xmldb_field('id');
             $field1->set_attributes(XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
@@ -73,7 +73,7 @@ function xmldb_local_coursequota_upgrade($oldversion) {
         }
 
         // Plugin local_coursequota savepoint reached.
-        upgrade_plugin_savepoint(true, 2022031400, 'local', 'coursequota');
+        upgrade_plugin_savepoint(true, 2023020300, 'local', 'coursequota');
     }
 
     return true;

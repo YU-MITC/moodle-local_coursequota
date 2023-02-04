@@ -160,7 +160,7 @@ function local_coursequota_set_course_permission($courseid, $restriction, $cli) 
     $flag = false;
 
     $params = array('courseid' => $courseid);
-    $result = $DB->get_record('coursequota', $params);
+    $result = $DB->get_record('local_coursequota', $params);
 
     if (($result == null || empty($result)) && $restriction == false && $cli == false) {
         return false;
@@ -205,11 +205,11 @@ function local_coursequota_set_course_permission($courseid, $restriction, $cli) 
     }
 
     $params = array('courseid' => $courseid);
-    $result = $DB->get_record('coursequota', $params);
+    $result = $DB->get_record('local_coursequota', $params);
 
     if ($restriction) {
         if ($result == null || empty($result)) {
-            $statement = 'insert into {coursequota} ';
+            $statement = 'insert into {local_coursequota} ';
             $statement .= 'values (0, :courseid, :timemodified)';
             $params = array('courseid' => $courseid,
                             'timemodified' => $now
@@ -219,7 +219,7 @@ function local_coursequota_set_course_permission($courseid, $restriction, $cli) 
         }
     } else {
         if ($result !== null && !empty($result)) {
-            $DB->delete_records('coursequota', array('id' => $result->id));
+            $DB->delete_records('local_coursequota', array('id' => $result->id));
             $flag = true;
         }
     }
@@ -244,15 +244,15 @@ function local_coursequota_reset_all($target) {
 
     if ($target == 'database') {
         // Get all records from plugin's table.
-        $result = $DB->get_records('coursequota');
+        $result = $DB->get_records('local_coursequota');
     } else {
         $result = $DB->get_records('course');
     }
 
-    // When there exists no record in coursequota table.
+    // When there exists no record in local_coursequota table.
     if ($result === null || empty($result)) {
         echo get_string('notchanged', QUOTA_PLUGIN_NAME) . PHP_EOL;
-    } else { // When there exists record(s) in coursequota table.
+    } else { // When there exists record(s) in local_coursequota table.
         // Get course context from retrieved array.
         foreach ($result as $row) {
             $courseid = null;
