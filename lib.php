@@ -97,6 +97,6 @@ function local_courequota_pre_course_delete() {
     global $COURSE, $DB;
 
     $context = context_course::instance($COURSE->id);
-    $DB->delete_records('coursequota', array('courseid' => $COURSE->id));
+    $DB->delete_records('local_coursequota', array('courseid' => $COURSE->id));
 }
 
