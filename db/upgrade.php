@@ -44,7 +44,7 @@ function xmldb_local_coursequota_upgrade($oldversion) {
     $dbman = $DB->get_manager();
 
     if ($oldversion < 2023020300) {
-        $table = new xmldb_table('local_coursequota');
+        $table = new xmldb_table('coursequota');
         if (!$dbman->table_exists($table)) {
             $field1 = new xmldb_field('id');
             $field1->set_attributes(XMLDB_TYPE_INTEGER, '10', XMLDB_UNSIGNED, XMLDB_NOTNULL, XMLDB_SEQUENCE, null, null);
