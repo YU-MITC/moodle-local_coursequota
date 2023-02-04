@@ -73,7 +73,7 @@ function xmldb_local_coursequota_upgrade($oldversion) {
         }
 
         // Plugin local_coursequota savepoint reached.
-        upgrade_plugin_savepoint(true, 2023020300, 'local', 'coursequota');
+        upgrade_plugin_savepoint(true, 2023020500, 'local', 'coursequota');
     }
 
     return true;
