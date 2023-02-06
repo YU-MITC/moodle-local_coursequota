@@ -25,8 +25,15 @@
 
 defined( 'MOODLE_INTERNAL' ) || die();
 
-require(dirname(dirname(dirname(dirname(__FILE__)))) . '/config.php');
 require(dirname(dirname(__FILE__)) . '/locallib.php');
 
-local_coursequota_reset_all('site');
+/**
+ * Execute local_coursequota uninstall.
+ *
+ * @return bool - this function always return true.
+ */
+function xmldb_local_coursequota_uninstall() {
 
+    local_coursequota_reset_all('site');
+    return true;
+}
